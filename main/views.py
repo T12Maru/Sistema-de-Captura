@@ -1,13 +1,8 @@
-<<<<<<< HEAD
 from django.shortcuts import render,redirect
 from django.contrib.auth import login,logout,authenticate
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.contrib.auth.models import User
 from django.db import IntegrityError
-=======
-from django.shortcuts import render
->>>>>>> f3eb7c58c0a32e862e79d0c5ad3b78e85c0fa09d
-
 # Create your views here.
 def signup(request):
     if request.method == 'GET':
@@ -34,7 +29,6 @@ def signup(request):
 
 
 def signin(request):
-<<<<<<< HEAD
     if request.method =='GET':    
         return render(request,'signin.html',{
             'form': AuthenticationForm
@@ -56,6 +50,3 @@ def inicio(request):
 def signout(request):
     logout(request)
     return redirect('signin')
-=======
-    return render(request,'signin.html')
->>>>>>> f3eb7c58c0a32e862e79d0c5ad3b78e85c0fa09d
