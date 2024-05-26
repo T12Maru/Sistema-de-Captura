@@ -22,7 +22,7 @@ El sistema buscara que por medio de un usuario/administrador, se puedan ingresar
 6. Ingresar los datos correspondientes para realizar la conexión con su base de datos MySql. Si desea vincular otra base de datos distinta a MySql, deberá leer la documentación de django.
 7. Finalmente, usando la terminar, ubicarse en el directorio del proyecto donde se encuentra el archivo manage.py y ejecucar el comando python manage.py runserver. Si el comando no funciona, use el siguiente comando: py manage.py runserver.
 8. Si python arroja un error, debe ser debido a que falta hacer las migraciones de la base de datos, para ello usaremos los siguientes comandos seguidos uno del otro:
-  i. python manage.py makemigrations
-  ii. python manage.py migrate
+   1. python manage.py makemigrations
+   2. python manage.py migrate
 9. Ejecutamos nuevamente el comando python manage.py runserver.
    
