@@ -13,7 +13,7 @@ El sistema buscara que por medio de un usuario/administrador, se puedan ingresar
 - Se utilizó JavaScript para utilidades dinámicas en la página. 
 - Como base de datos, se utilizará MySQL.
 
-#Pasos para correr la página web en su propia computadora
+# Pasos para correr la página web en su propia computadora
 1. Instalar Python y MySql en su computadora.
 2. Dentro de Python, asegurarse de tener instalada la librería pymysql y django, si no cuenta con ellas, deberá instalarlas. En windows se puede usar el comando pip install PyMySQL para instalar pymysql. Y puede usar pip install django para instalar Django.
 3. Haciendo uso de MySql, crear una base de datos llamada usuarios, asignarle un usuario y una contraseña.
