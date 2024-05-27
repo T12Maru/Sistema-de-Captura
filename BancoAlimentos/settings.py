@@ -77,8 +77,8 @@ WSGI_APPLICATION = 'BancoAlimentos.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'usuarios',
-        'USER': 'maru',
+        'NAME': 'dengue',
+        'USER': 'cesar',
         'PASSWORD':'12345',
         'HOST': 'localhost',
         'PORT': '3306'
