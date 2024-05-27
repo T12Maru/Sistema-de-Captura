@@ -34,6 +34,13 @@ class Dengue(models.Model):
     entidad_asig = models.IntegerField(db_column='ENTIDAD_ASIG', blank=True, null=True)  # Field name made lowercase.
     municipio_asig = models.IntegerField(db_column='MUNICIPIO_ASIG', blank=True, null=True)  # Field name made lowercase.
 
+    def __str__(self):
+        fila = "Titulo: " + str(self.id_registro) + " - " + "Estado :" + str(self.entidad_res)
+        return fila
+    def ObtenerAtributos(self):
+        #atributos = ["fecha_actualizacion","sexo","edad"]
+        atributos = ["Hermosillo", 'Nogales', 'Obregon', 'Navojoa']
+        return atributos
     class Meta:
         managed = False
         db_table = 'dengue_abierto'

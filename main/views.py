@@ -3,6 +3,7 @@ from django.contrib.auth import login,logout,authenticate
 from django.contrib.auth.forms import UserCreationForm,AuthenticationForm
 from django.contrib.auth.models import User
 from django.db import IntegrityError
+from .models import Dengue
 # Create your views here.
 def signup(request):
     if request.method == 'GET':
@@ -46,7 +47,14 @@ def signin(request):
             return redirect('inicio')
 
 def inicio(request):
-    return render(request,'inicio.html')
+    numMujeres = []
+    numMujeres.append(Dengue.objects.filter(entidad_res="26").filter(sexo="2").filter(municipio_res="030").count())
+    numMujeres.append(Dengue.objects.filter(entidad_res="26").filter(sexo="2").filter(municipio_res="018").count())
+    numMujeres.append(Dengue.objects.filter(entidad_res="26").filter(sexo="2").filter(municipio_res="043").count())
+    numMujeres.append(Dengue.objects.filter(entidad_res="26").filter(sexo="2").filter(municipio_res="029").count())
+    numMujeres.append(Dengue.objects.filter(entidad_res="26").filter(sexo="2").filter(municipio_res="042").count())
+    print(numMujeres)
+    return render(request,'inicio.html',{'numMujeres': numMujeres})
 
 def signout(request):
     logout(request)
