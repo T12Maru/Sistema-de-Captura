@@ -46,15 +46,24 @@ def signin(request):
             login(request,user)
             return redirect('inicio')
 
+def grafico(request):
+    if request.user.is_authenticated:
+        numMujeres = []
+        numMujeres.append(Dengue.objects.filter(entidad_res="26").filter(sexo="2").filter(municipio_res="030").count())
+        numMujeres.append(Dengue.objects.filter(entidad_res="26").filter(sexo="2").filter(municipio_res="018").count())
+        numMujeres.append(Dengue.objects.filter(entidad_res="26").filter(sexo="2").filter(municipio_res="043").count())
+        numMujeres.append(Dengue.objects.filter(entidad_res="26").filter(sexo="2").filter(municipio_res="029").count())
+        numMujeres.append(Dengue.objects.filter(entidad_res="26").filter(sexo="2").filter(municipio_res="042").count())
+        print(numMujeres)
+        return render(request,'grafico.html',{'numMujeres': numMujeres})
+    else:
+        return redirect('signin')
+    
 def inicio(request):
-    numMujeres = []
-    numMujeres.append(Dengue.objects.filter(entidad_res="26").filter(sexo="2").filter(municipio_res="030").count())
-    numMujeres.append(Dengue.objects.filter(entidad_res="26").filter(sexo="2").filter(municipio_res="018").count())
-    numMujeres.append(Dengue.objects.filter(entidad_res="26").filter(sexo="2").filter(municipio_res="043").count())
-    numMujeres.append(Dengue.objects.filter(entidad_res="26").filter(sexo="2").filter(municipio_res="029").count())
-    numMujeres.append(Dengue.objects.filter(entidad_res="26").filter(sexo="2").filter(municipio_res="042").count())
-    print(numMujeres)
-    return render(request,'inicio.html',{'numMujeres': numMujeres})
+    if request.user.is_authenticated:
+        return render(request,"inicio.html")
+    else:
+        return redirect('signin')
 
 def signout(request):
     logout(request)
