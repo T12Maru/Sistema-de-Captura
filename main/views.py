@@ -54,8 +54,24 @@ def grafico(request):
         numMujeres.append(Dengue.objects.filter(entidad_res="26").filter(sexo="2").filter(municipio_res="043").count())
         numMujeres.append(Dengue.objects.filter(entidad_res="26").filter(sexo="2").filter(municipio_res="029").count())
         numMujeres.append(Dengue.objects.filter(entidad_res="26").filter(sexo="2").filter(municipio_res="042").count())
-        print(numMujeres)
-        return render(request,'grafico.html',{'numMujeres': numMujeres})
+
+        numHombres = []
+        numHombres.append(Dengue.objects.filter(entidad_res="26").filter(sexo="1").filter(municipio_res="030").count())
+        numHombres.append(Dengue.objects.filter(entidad_res="26").filter(sexo="1").filter(municipio_res="018").count())
+        numHombres.append(Dengue.objects.filter(entidad_res="26").filter(sexo="1").filter(municipio_res="043").count())
+        numHombres.append(Dengue.objects.filter(entidad_res="26").filter(sexo="1").filter(municipio_res="029").count())
+        numHombres.append(Dengue.objects.filter(entidad_res="26").filter(sexo="1").filter(municipio_res="042").count())
+
+        dengueEstados =[]
+        dengueEstados.append(Dengue.objects.filter(entidad_res="26").count() )
+        dengueEstados.append(Dengue.objects.filter(entidad_res="25").count() )
+        dengueEstados.append(Dengue.objects.filter(entidad_res="02").count() )
+        dengueEstados.append(Dengue.objects.filter(entidad_res="07").count() )
+        
+        return render(request,'grafico.html',{'numMujeres': numMujeres,
+                                              'numHombres': numHombres,
+                                              'dengueEsta': dengueEstados
+            })
     else:
         return redirect('signin')
     

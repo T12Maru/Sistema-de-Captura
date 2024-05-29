@@ -9,7 +9,7 @@
 {% block content %}
 
 {% if user.is_authenticated %}
-   
+<section>
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-12">
@@ -23,12 +23,12 @@
                 type: 'column'
             },
             title: {
-                text: 'Numero de mujeres con dengue',
-                align: 'left'
+                text: 'Comparación del número de contagio de dengue segun el sexo',
+                align: 'center'
             },
             subtitle: {
                 text:
-                    'Source: <a target="_blank" ' +
+                    'Ref: <a target="_blank" ' +
                     'href="https://www.gob.mx/salud/documentos/datos-abiertos-152127">Gobierno de México</a>',
                 align: 'left'
             },
@@ -42,11 +42,8 @@
             yAxis: {
                 min: 0,
                 title: {
-                    text: 'Num de Mujeres Sonorenses que enfermaron por dengue'
+                    text: 'Num de hombres/mujeres Sonorenses que enfermaron por dengue'
                 }
-            },
-            tooltip: {
-                valueSuffix: ' (1000 cm)'
             },
             plotOptions: {
                 column: {
@@ -56,14 +53,74 @@
             },
             series: [
                 {
-                    name: 'Municipio',
+                    name: 'Mujeres',
                     colorByPoint: true,
                     data: JSON.parse('{{numMujeres|safe}}')
+                },
+                {
+                    name: 'Hombres',
+                    colorByPoint: true,
+                    data: JSON.parse('{{numHombres|safe}}')
                 }
             ]
         });
     </script>
 </div>
+</section>
+
+<section>
+<div class="container-fluid">
+    <div class="row-mb-4 offset margin-top-4">
+        <div class="col-lg-12">
+            <div id="container2"></div>
+        </div>
+    </div>
+
+    <script type="application/javascript", type="text/javascript">
+        Highcharts.chart('container2', {
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Comparación del número de contagio de dengue el estado',
+                align: 'center'
+            },
+            subtitle: {
+                text:
+                    'Ref: <a target="_blank" ' +
+                    'href="https://www.gob.mx/salud/documentos/datos-abiertos-152127">Gobierno de México</a>',
+                align: 'left'
+            },
+            xAxis: {
+                categories: ["Sonora","Sinaloa","Baja California","Chiapas"],
+                crosshair: true,
+                accessibility: {
+                    description: 'Estados de México'
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Num de personas que enfermaron por dengue'
+                }
+            },
+            plotOptions: {
+                column: {
+                    pointPadding: 0.2,
+                    borderWidth: 0
+                }
+            },
+            series: [
+                {
+                    name: 'numPersonas',
+                    colorByPoint: true,
+                    data: JSON.parse('{{dengueEsta|safe}}')
+                }
+            ]
+        });
+    </script>
+</div>
+</section>
 
 {% endif %}
 
